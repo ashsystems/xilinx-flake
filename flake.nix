@@ -145,6 +145,7 @@
                 '')
               ];
               vitis = [ ];
+              hw_server = [ ];
               model_composer = [
                 (pkgs.runCommand "${name}-icon" { } ''
                   install -Dm644 ${./icons/matlab.png} $out/share/icons/hicolor/256x256/apps/${name}.png
@@ -267,6 +268,15 @@
           description = "Vivado/Vitis License Manager - view, load and manage Xilinx/AMD license files";
         };
       };
+      packages.x86_64-linux.hw_server = createXilinxPkg {
+        product = "Vivado";
+        binary = "hw_server";
+        desktopName = "Vivado Hardware Server";
+        meta = metaCommon // {
+          homepage = "tbd";
+          description = "tbd";
+        };
+      };
       packages.x86_64-linux.vitis = createXilinxPkg {
         product = "Vitis";
         meta = metaCommon // {
@@ -281,7 +291,7 @@
           description = "High-Level Synthesis from C, C++ and OpenCL";
         };
       };
-      packages.x86_64-linux.model_composer = createXilinxPkg {
+      packages.x86_64-linux.hw_manager = createXilinxPkg {
         product = "Model_Composer";
         meta = metaCommon // {
           homepage = "https://www.xilinx.com/products/design-tools/vitis/vitis-model-composer.html";
